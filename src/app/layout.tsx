@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
   description: "",
 };
 
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GTAG_ID as string;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -17,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>{children}</body>
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }

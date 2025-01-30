@@ -1,5 +1,7 @@
 "use client";
 
+import { sendGTMEvent } from "@next/third-parties/google";
+
 export default function Hero() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
@@ -10,7 +12,10 @@ export default function Hero() {
         <p className="text-xl text-gray-600 mb-6 text-center">
           Esta página está sendo rastreada pelo Google Analytics.
         </p>
-        <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+        <button
+          onClick={() => sendGTMEvent({ event: "buttonClicked", value: "xyz" })}
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
+        >
           Clique Aqui!
         </button>
         <p className="mt-4 text-sm text-gray-500 text-center">

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "",
 };
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GTAG_ID as string;
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GTAG_ID;
 
 export default function RootLayout({
   children,
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>{children}</body>
-      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+      {GA_MEASUREMENT_ID ? <GoogleAnalytics gaId={GA_MEASUREMENT_ID} /> : null}
     </html>
   );
 }

@@ -1,8 +1,13 @@
 "use client";
 
-import { sendGTMEvent } from "@next/third-parties/google";
+import { trackEvent } from "../../utils/analytics";
 
 export default function Hero() {
+  const handleClick = () => {
+    trackEvent("Interação", "Clique no botão");
+    console.log("Botão clicado!");
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
@@ -13,7 +18,7 @@ export default function Hero() {
           Esta página está sendo rastreada pelo Google Analytics.
         </p>
         <button
-          onClick={() => sendGTMEvent({ event: "buttonClicked", value: "xyz" })}
+          onClick={handleClick}
           className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"
         >
           Clique Aqui!
